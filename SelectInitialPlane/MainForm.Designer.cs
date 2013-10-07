@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlIcons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txbAircraftTitle = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolTipForm = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -396,6 +398,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txbAircraftTitle;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolTip toolTipForm;
     }
 }
 

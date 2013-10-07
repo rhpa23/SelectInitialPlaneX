@@ -204,6 +204,7 @@ namespace SelectInitialPlane
                     UiIcon icon = new UiIcon(item.Value);
                     icon.OnIconSelect += icon_OnIconSelect;
                     pnlIcons.Controls.Add(icon);
+                    toolTipForm.SetToolTip(icon, item.Value.Description.Replace("\\n", Environment.NewLine));
 
                     if (item.Value.Title == _selectedItemTitle)
                     {
