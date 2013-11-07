@@ -85,14 +85,15 @@ namespace SelectInitialPlane
 
         private void txbAircraftTitle_TextChanged(object sender, EventArgs e)
         {
+            string uiManufacturer = cmbAircraftManufacturer.SelectedItem != null ? cmbAircraftManufacturer.SelectedItem.ToString() : string.Empty;
+
             if (!string.IsNullOrEmpty(txbAircraftTitle.Text) && txbAircraftTitle.Text.Length >= 3)
             {
-                cmbAircraftManufacturer.SelectedIndex = -1;
-                BindListPlanes(string.Empty, txbAircraftTitle.Text);
+                BindListPlanes(uiManufacturer, txbAircraftTitle.Text);
             }
             else if (txbAircraftTitle.Text.Length == 0)
             {
-                BindListPlanes(string.Empty, string.Empty);
+                BindListPlanes(uiManufacturer, string.Empty);
             }
         }
 
@@ -197,9 +198,8 @@ namespace SelectInitialPlane
             _selectedItemTitle = GetFileProperty(_fsSituation, "Sim.0", "Sim"); 
             foreach (KeyValuePair<string, AirplanesInfo> item in _lstAirplanes)
             {
-                if ((string.IsNullOrEmpty(uiManufacturer) && string.IsNullOrEmpty(title)) ||
-                    (!string.IsNullOrEmpty(uiManufacturer) && item.Value.UiManufacturer == uiManufacturer) ||
-                    (!string.IsNullOrEmpty(title) && item.Value.Title.ToLower().Contains(title.ToLower())))
+                if ((string.IsNullOrEmpty(uiManufacturer) || item.Value.UiManufacturer == uiManufacturer) &&
+                    (string.IsNullOrEmpty(title) || item.Value.Title.ToLower().Contains(title.ToLower())))
                 {
                     UiIcon icon = new UiIcon(item.Value);
                     icon.OnIconSelect += icon_OnIconSelect;
